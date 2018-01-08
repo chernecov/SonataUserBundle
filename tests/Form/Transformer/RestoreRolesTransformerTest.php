@@ -19,7 +19,7 @@ use Sonata\UserBundle\Security\EditableRolesBuilder;
 
 class RestoreRolesTransformerTest extends TestCase
 {
-    public function testInvalidStateTransform(): void
+    public function testInvalidStateTransform()
     {
         $this->expectException(\RuntimeException::class);
 
@@ -29,7 +29,7 @@ class RestoreRolesTransformerTest extends TestCase
         $transformer->transform([]);
     }
 
-    public function testInvalidStateReverseTransform(): void
+    public function testInvalidStateReverseTransform()
     {
         $this->expectException(\RuntimeException::class);
 
@@ -39,7 +39,7 @@ class RestoreRolesTransformerTest extends TestCase
         $transformer->reverseTransform([]);
     }
 
-    public function testValidTransform(): void
+    public function testValidTransform()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 
@@ -51,7 +51,7 @@ class RestoreRolesTransformerTest extends TestCase
         $this->assertEquals($data, $transformer->transform($data));
     }
 
-    public function testValidReverseTransform(): void
+    public function testValidReverseTransform()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 
@@ -65,7 +65,7 @@ class RestoreRolesTransformerTest extends TestCase
         $this->assertEquals(['ROLE_FOO', 'ROLE_HIDDEN'], $transformer->reverseTransform($data));
     }
 
-    public function testTransformAllowEmptyOriginalRoles(): void
+    public function testTransformAllowEmptyOriginalRoles()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 
@@ -77,7 +77,7 @@ class RestoreRolesTransformerTest extends TestCase
         $this->assertEquals($data, $transformer->transform($data));
     }
 
-    public function testReverseTransformAllowEmptyOriginalRoles(): void
+    public function testReverseTransformAllowEmptyOriginalRoles()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 
@@ -91,7 +91,7 @@ class RestoreRolesTransformerTest extends TestCase
         $this->assertEquals(['ROLE_FOO'], $transformer->reverseTransform($data));
     }
 
-    public function testReverseTransformRevokedHierarchicalRole(): void
+    public function testReverseTransformRevokedHierarchicalRole()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 
@@ -116,7 +116,7 @@ class RestoreRolesTransformerTest extends TestCase
         $this->assertNotContains($revokedRole, $processedRoles);
     }
 
-    public function testReverseTransformHiddenRole(): void
+    public function testReverseTransformHiddenRole()
     {
         $roleBuilder = $this->createMock(EditableRolesBuilder::class);
 

@@ -62,7 +62,7 @@ class EditableRolesBuilder
     /*
      * @param TranslatorInterface $translator
      */
-    public function setTranslator(TranslatorInterface $translator): void
+    public function setTranslator(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
@@ -81,7 +81,7 @@ class EditableRolesBuilder
             return $roles;
         }
 
-        $this->iterateAdminRoles(function ($role, $isMaster) use ($domain, &$roles): void {
+        $this->iterateAdminRoles(function ($role, $isMaster) use ($domain, &$roles) {
             if ($isMaster) {
                 // if the user has the MASTER permission, allow to grant access the admin roles to other users
                 $roles[$role] = $this->translateRole($role, $domain);
@@ -124,7 +124,7 @@ class EditableRolesBuilder
             return $rolesReadOnly;
         }
 
-        $this->iterateAdminRoles(function ($role, $isMaster) use ($domain, &$rolesReadOnly): void {
+        $this->iterateAdminRoles(function ($role, $isMaster) use ($domain, &$rolesReadOnly) {
             if (!$isMaster && $this->authorizationChecker->isGranted($role)) {
                 // although the user has no MASTER permission, allow the currently logged in user to view the role
                 $rolesReadOnly[$role] = $this->translateRole($role, $domain);
@@ -134,7 +134,7 @@ class EditableRolesBuilder
         return $rolesReadOnly;
     }
 
-    private function iterateAdminRoles(callable $func): void
+    private function iterateAdminRoles(callable $func)
     {
         // get roles from the Admin classes
         foreach ($this->pool->getAdminServiceIds() as $id) {

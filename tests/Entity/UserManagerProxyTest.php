@@ -18,7 +18,7 @@ use Sonata\UserBundle\Entity\UserManagerProxy;
 
 class UserManagerProxyTest extends TestCase
 {
-    public function testProxy(): void
+    public function testProxy()
     {
         $doctrine = $this->getMockBuilder('Doctrine\Common\Persistence\ManagerRegistry')->disableOriginalConstructor()->getMock();
 

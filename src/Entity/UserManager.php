@@ -76,7 +76,7 @@ class UserManager extends BaseUserManager implements UserManagerInterface, Manag
     /**
      * {@inheritdoc}
      */
-    public function save($entity, $andFlush = true): void
+    public function save($entity, $andFlush = true)
     {
         if (!$entity instanceof UserInterface) {
             throw new \InvalidArgumentException('Save method expected entity of type UserInterface');
@@ -88,7 +88,7 @@ class UserManager extends BaseUserManager implements UserManagerInterface, Manag
     /**
      * {@inheritdoc}
      */
-    public function delete($entity, $andFlush = true): void
+    public function delete($entity, $andFlush = true)
     {
         if (!$entity instanceof UserInterface) {
             throw new \InvalidArgumentException('Save method expected entity of type UserInterface');

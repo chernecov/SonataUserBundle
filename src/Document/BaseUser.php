@@ -24,7 +24,7 @@ class BaseUser extends AbstractedUser implements UserInterface
     /**
      * Hook on pre-persist operations.
      */
-    public function prePersist(): void
+    public function prePersist()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
@@ -33,7 +33,7 @@ class BaseUser extends AbstractedUser implements UserInterface
     /**
      * Hook on pre-update operations.
      */
-    public function preUpdate(): void
+    public function preUpdate()
     {
         $this->updatedAt = new \DateTime();
     }

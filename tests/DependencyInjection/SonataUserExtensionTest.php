@@ -29,14 +29,14 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         parent::setUp();
 
         $this->setParameter('kernel.bundles', ['SonataAdminBundle' => true]);
     }
 
-    public function testLoadDefault(): void
+    public function testLoadDefault()
     {
         $this->load();
 
@@ -51,7 +51,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testTwigConfigParameterIsSetting(): void
+    public function testTwigConfigParameterIsSetting()
     {
         $fakeContainer = $this->getMockBuilder(ContainerBuilder::class)
             ->setMethods(['hasExtension', 'prependExtensionConfig'])
@@ -73,7 +73,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         }
     }
 
-    public function testTwigConfigParameterIsSet(): void
+    public function testTwigConfigParameterIsSet()
     {
         $fakeTwigExtension = $this->getMockBuilder(TwigExtension::class)
             ->setMethods(['load', 'getAlias'])
@@ -97,7 +97,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testTwigConfigParameterIsNotSet(): void
+    public function testTwigConfigParameterIsNotSet()
     {
         $this->load();
 
@@ -106,22 +106,22 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         $this->assertArrayNotHasKey(0, $twigConfigurations);
     }
 
-    public function testCorrectModelClass(): void
+    public function testCorrectModelClass()
     {
         $this->load(['class' => ['user' => 'Sonata\UserBundle\Tests\Entity\User']]);
     }
 
-    public function testCorrectModelClassWithLeadingSlash(): void
+    public function testCorrectModelClassWithLeadingSlash()
     {
         $this->load(['class' => ['user' => '\Sonata\UserBundle\Tests\Entity\User']]);
     }
 
-    public function testCorrectAdminClass(): void
+    public function testCorrectAdminClass()
     {
         $this->load(['admin' => ['user' => ['class' => '\Sonata\UserBundle\Tests\Admin\Entity\UserAdmin']]]);
     }
 
-    public function testCorrectModelClassWithNotDefaultManagerType(): void
+    public function testCorrectModelClassWithNotDefaultManagerType()
     {
         $this->load([
             'manager_type' => 'mongodb',
@@ -136,7 +136,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
-    public function testIncorrectModelClass(): void
+    public function testIncorrectModelClass()
     {
         $this->expectException('InvalidArgumentException');
 
@@ -145,7 +145,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
         $this->load(['class' => ['user' => 'Foo\User']]);
     }
 
-    public function testNotCorrespondingModelClass(): void
+    public function testNotCorrespondingModelClass()
     {
         $this->expectException('InvalidArgumentException');
 
@@ -177,7 +177,7 @@ final class SonataUserExtensionTest extends AbstractExtensionTestCase
     /**
      * {@inheritdoc}
      */
-    protected function load(array $configurationValues = []): void
+    protected function load(array $configurationValues = [])
     {
         $configs = [$this->getMinimalConfiguration(), $configurationValues];
 

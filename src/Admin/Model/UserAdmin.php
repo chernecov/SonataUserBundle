@@ -66,7 +66,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    public function preUpdate($user): void
+    public function preUpdate($user)
     {
         $this->getUserManager()->updateCanonicalFields($user);
         $this->getUserManager()->updatePassword($user);
@@ -75,7 +75,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * @param UserManagerInterface $userManager
      */
-    public function setUserManager(UserManagerInterface $userManager): void
+    public function setUserManager(UserManagerInterface $userManager)
     {
         $this->userManager = $userManager;
     }
@@ -91,7 +91,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper): void
+    protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('username')
@@ -111,7 +111,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $filterMapper): void
+    protected function configureDatagridFilters(DatagridMapper $filterMapper)
     {
         $filterMapper
             ->add('id')
@@ -124,7 +124,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $showMapper): void
+    protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
             ->with('General')
@@ -163,7 +163,7 @@ class UserAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper): void
+    protected function configureFormFields(FormMapper $formMapper)
     {
         // define group zoning
         $formMapper

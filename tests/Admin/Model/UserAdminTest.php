@@ -21,7 +21,7 @@ use Sonata\UserBundle\Admin\Model\UserAdmin;
  */
 final class UserAdminTest extends TestCase
 {
-    public function testInstance(): void
+    public function testInstance()
     {
         $admin = new UserAdmin('admin.group', 'Sonata\UserBundle\Model\User', 'SonataAdminBundle:CRUD');
 

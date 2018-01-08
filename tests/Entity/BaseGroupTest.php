@@ -18,7 +18,7 @@ use Sonata\UserBundle\Entity\BaseGroup;
 
 class BaseGroupTest extends TestCase
 {
-    public function testToString(): void
+    public function testToString()
     {
         // Given
         $group = new BaseGroup('Group');

@@ -18,7 +18,7 @@ use Sonata\UserBundle\Entity\BaseUser;
 
 class BaseUserTest extends TestCase
 {
-    public function testDateSetters(): void
+    public function testDateSetters()
     {
         // Given
         $user = new BaseUser();
@@ -36,7 +36,7 @@ class BaseUserTest extends TestCase
         $this->assertEquals($today->format('U'), $user->getUpdatedAt()->format('U'), 'Should contain today\'s date');
     }
 
-    public function testDateWithPrePersist(): void
+    public function testDateWithPrePersist()
     {
         // Given
         $user = new BaseUser();
@@ -53,7 +53,7 @@ class BaseUserTest extends TestCase
         $this->assertEquals($today->format('Y-m-d'), $user->getUpdatedAt()->format('Y-m-d'), 'Should be updated today');
     }
 
-    public function testDateWithPreUpdate(): void
+    public function testDateWithPreUpdate()
     {
         // Given
         $user = new BaseUser();
@@ -71,7 +71,7 @@ class BaseUserTest extends TestCase
         $this->assertEquals($today->format('Y-m-d'), $user->getUpdatedAt()->format('Y-m-d'), 'Should be updated today');
     }
 
-    public function testSettingMultipleGroups(): void
+    public function testSettingMultipleGroups()
     {
         // Given
         $user = new BaseUser();
@@ -89,7 +89,7 @@ class BaseUserTest extends TestCase
         $this->assertTrue($user->hasGroup('Group 2'), 'Should have a group named "Group 2"');
     }
 
-    public function testTwoStepVerificationCode(): void
+    public function testTwoStepVerificationCode()
     {
         // Given
         $user = new BaseUser();
@@ -101,7 +101,7 @@ class BaseUserTest extends TestCase
         $this->assertEquals('123456', $user->getTwoStepVerificationCode(), 'Should return the two step verification code');
     }
 
-    public function testToStringWithName(): void
+    public function testToStringWithName()
     {
         // Given
         $user = new BaseUser();
@@ -114,7 +114,7 @@ class BaseUserTest extends TestCase
         $this->assertEquals('John', $string, 'Should return the username as string representation');
     }
 
-    public function testToStringWithoutName(): void
+    public function testToStringWithoutName()
     {
         // Given
         $user = new BaseUser();

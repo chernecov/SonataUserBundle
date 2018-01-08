@@ -20,12 +20,12 @@ class AdminSecurityControllerTest extends TestCase
 {
     private $controller;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->controller = new AdminSecurityController();
     }
 
-    public function testItIsInstantiable(): void
+    public function testItIsInstantiable()
     {
         $this->assertNotNull($this->controller);
     }

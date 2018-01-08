@@ -20,12 +20,12 @@ class AdminResettingControllerTest extends TestCase
 {
     private $controller;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->controller = new AdminResettingController();
     }
 
-    public function testItIsInstantiable(): void
+    public function testItIsInstantiable()
     {
         $this->assertNotNull($this->controller);
     }
