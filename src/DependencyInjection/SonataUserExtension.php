@@ -37,7 +37,7 @@ class SonataUserExtension extends Extension implements PrependExtensionInterface
     {
         if ($container->hasExtension('twig')) {
             // add custom form widgets
-            $container->prependExtensionConfig('twig', ['form_themes' => ['SonataUserBundle:Form:form_admin_fields.html.twig']]);
+            $container->prependExtensionConfig('twig', ['form_themes' => ['@SonataUser/Form/form_admin_fields.html.twig']]);
         }
     }
 
@@ -71,6 +71,7 @@ class SonataUserExtension extends Extension implements PrependExtensionInterface
         }
 
         $loader->load('twig.xml');
+        $loader->load('command.xml');
 
         if ('orm' === $config['manager_type'] && isset(
             $bundles['FOSRestBundle'],
@@ -259,6 +260,10 @@ class SonataUserExtension extends Extension implements PrependExtensionInterface
     {
         $container->setAlias('sonata.user.user_manager', sprintf('sonata.user.%s.user_manager', $managerType));
         $container->setAlias('sonata.user.group_manager', sprintf('sonata.user.%s.group_manager', $managerType));
+
+        // NEXT_MAJOR: call setPublic(true) directly, when dropping support for Sf 3.3
+        $container->getAlias('sonata.user.user_manager')->setPublic(true);
+        $container->getAlias('sonata.user.group_manager')->setPublic(true);
     }
 
     /**

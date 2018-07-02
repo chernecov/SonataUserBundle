@@ -15,6 +15,8 @@ namespace Sonata\UserBundle\Tests\Form\Type;
 
 use Sonata\UserBundle\Form\Type\SecurityRolesType;
 use Sonata\UserBundle\Security\EditableRolesBuilder;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,7 +28,7 @@ class SecurityRolesTypeTest extends TypeTestCase
 {
     protected $roleBuilder;
 
-    public function testGetDefaultOptions()
+    public function testGetDefaultOptions(): void
     {
         $type = new SecurityRolesType($this->roleBuilder);
 
@@ -35,18 +37,20 @@ class SecurityRolesTypeTest extends TypeTestCase
 
         $options = $optionResolver->resolve();
         $this->assertCount(3, $options['choices']);
+
+        if (method_exists(FormTypeInterface::class, 'setDefaultOptions')) {
+            $this->assertTrue($options['choices_as_values']);
+        }
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         $type = new SecurityRolesType($this->roleBuilder);
-        $this->assertEquals(
-            'Symfony\Component\Form\Extension\Core\Type\ChoiceType',
-            $type->getParent()
-        );
+
+        $this->assertEquals(ChoiceType::class, $type->getParent());
     }
 
-    public function testSubmitValidData()
+    public function testSubmitValidData(): void
     {
         $form = $this->factory->create($this->getSecurityRolesTypeName(), null, [
             'multiple' => true,
@@ -61,7 +65,7 @@ class SecurityRolesTypeTest extends TypeTestCase
         $this->assertTrue(in_array('ROLE_FOO', $form->getData()));
     }
 
-    public function testSubmitInvalidData()
+    public function testSubmitInvalidData(): void
     {
         $form = $this->factory->create($this->getSecurityRolesTypeName(), null, [
             'multiple' => true,
@@ -75,7 +79,7 @@ class SecurityRolesTypeTest extends TypeTestCase
         $this->assertNull($form->getData());
     }
 
-    public function testSubmitWithHiddenRoleData()
+    public function testSubmitWithHiddenRoleData(): void
     {
         $originalRoles = ['ROLE_SUPER_ADMIN', 'ROLE_USER'];
 
@@ -92,25 +96,6 @@ class SecurityRolesTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
         $this->assertCount(2, $form->getData());
         $this->assertContains('ROLE_SUPER_ADMIN', $form->getData());
-    }
-
-    public function testChoicesAsValues()
-    {
-        $resolver = new OptionsResolver();
-        $type = new SecurityRolesType($this->roleBuilder);
-
-        // If 'choices_as_values' option is not defined (Symfony >= 3.0), default value should not be set.
-        $type->configureOptions($resolver);
-
-        $this->assertFalse($resolver->hasDefault('choices_as_values'));
-
-        // If 'choices_as_values' option is defined (Symfony 2.8), default value should be set to true.
-        $resolver->setDefined(['choices_as_values']);
-        $type->configureOptions($resolver);
-        $options = $resolver->resolve();
-
-        $this->assertTrue($resolver->hasDefault('choices_as_values'));
-        $this->assertTrue($options['choices_as_values']);
     }
 
     protected function getExtensions()

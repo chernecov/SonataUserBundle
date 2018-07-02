@@ -51,13 +51,13 @@ Full configuration options:
                 translation:    SonataUserBundle
 
         profile:
-            default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if user doesn't have one
+            default_avatar: 'bundles/sonatauser/default_avatar.png' # Default avatar displayed if the user doesn't have one
 
     # override FOSUser default serialization
     jms_serializer:
         metadata:
             directories:
-                -
+                App:
                     path: "%kernel.root_dir%/../vendor/sonata-project/user-bundle/Sonata/UserBundle/Resources/config/serializer/FOSUserBundle"
                     namespace_prefix: 'FOS\UserBundle'
 
