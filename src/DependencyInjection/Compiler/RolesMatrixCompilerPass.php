@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 final class RolesMatrixCompilerPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('sonata.admin') as $name => $items) {
             foreach ($items as $item) {

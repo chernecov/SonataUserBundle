@@ -31,14 +31,14 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp(): void
+    public function setUp()
     {
         $this->rolesBuilder = $this->createMock(MatrixRolesBuilderInterface::class);
         $this->environment = $this->createMock(Environment::class);
         $this->formView = $this->createMock(FormView::class);
     }
 
-    public function testGetName(): void
+    public function testGetName()
     {
         $rolesMatrixExtension = new RolesMatrixExtension($this->rolesBuilder);
         $this->assertSame(RolesMatrixExtension::class, $rolesMatrixExtension->getName());
@@ -47,7 +47,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderRolesListWithAdminLabel(): void
+    public function renderRolesListWithAdminLabel()
     {
         $roles = [
             'SUPER_TEST_ROLE' => [
@@ -80,7 +80,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderRolesList(): void
+    public function renderRolesList()
     {
         $roles = [
             'SUPER_TEST_ROLE' => [
@@ -123,7 +123,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderRolesListWithoutFormValue(): void
+    public function renderRolesListWithoutFormValue()
     {
         $roles = [
             'SUPER_TEST_ROLE' => [
@@ -165,7 +165,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderMatrixWithoutAdminLabels(): void
+    public function renderMatrixWithoutAdminLabels()
     {
         $roles = [
             'BASE_ROLE_FOO_%s' => [
@@ -205,7 +205,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderMatrix(): void
+    public function renderMatrix()
     {
         $roles = [
             'BASE_ROLE_FOO_EDIT' => [
@@ -261,7 +261,7 @@ final class RolesMatrixExtensionTest extends TestCase
     /**
      * @test
      */
-    public function renderMatrixFormVarsNotSet(): void
+    public function renderMatrixFormVarsNotSet()
     {
         $roles = [
             'BASE_ROLE_FOO_%s' => [

@@ -28,7 +28,7 @@ final class RolesMatrixTypeTest extends TypeTestCase
 {
     private $roleBuilder;
 
-    public function testGetDefaultOptions(): void
+    public function testGetDefaultOptions()
     {
         $type = new RolesMatrixType($this->roleBuilder);
 
@@ -43,14 +43,14 @@ final class RolesMatrixTypeTest extends TypeTestCase
         }
     }
 
-    public function testGetParent(): void
+    public function testGetParent()
     {
         $type = new RolesMatrixType($this->roleBuilder);
 
         $this->assertEquals(ChoiceType::class, $type->getParent());
     }
 
-    public function testSubmitValidData(): void
+    public function testSubmitValidData()
     {
         $form = $this->factory->create(RolesMatrixType::class, null, [
             'multiple' => true,
@@ -65,7 +65,7 @@ final class RolesMatrixTypeTest extends TypeTestCase
         $this->assertTrue(in_array('ROLE_FOO', $form->getData()));
     }
 
-    public function testSubmitInvalidData(): void
+    public function testSubmitInvalidData()
     {
         $form = $this->factory->create(RolesMatrixType::class, null, [
             'multiple' => true,
@@ -79,7 +79,7 @@ final class RolesMatrixTypeTest extends TypeTestCase
         $this->assertNull($form->getData());
     }
 
-    public function testChoicesAsValues(): void
+    public function testChoicesAsValues()
     {
         $resolver = new OptionsResolver();
         $type = new RolesMatrixType($this->roleBuilder);

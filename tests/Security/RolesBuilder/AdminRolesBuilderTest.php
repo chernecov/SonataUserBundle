@@ -43,7 +43,7 @@ final class AdminRolesBuilderTest extends TestCase
         'ADMIN' => [0 => 'MASTER'],
     ];
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->securityHandler = $this->createMock(SecurityHandlerInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
@@ -54,7 +54,7 @@ final class AdminRolesBuilderTest extends TestCase
         $this->translator = $this->createMock(TranslatorInterface::class);
     }
 
-    public function testGetPermissionLabels(): void
+    public function testGetPermissionLabels()
     {
         $this->translator->method('trans');
 
@@ -95,7 +95,7 @@ final class AdminRolesBuilderTest extends TestCase
         $this->assertSame($expected, $rolesBuilder->getPermissionLabels());
     }
 
-    public function testGetRoles(): void
+    public function testGetRoles()
     {
         $this->translator->method('trans')
             ->willReturn('Foo');
@@ -164,7 +164,7 @@ final class AdminRolesBuilderTest extends TestCase
         $this->assertSame($expected, $rolesBuilder->getRoles());
     }
 
-    public function testGetAddExcludeAdmins(): void
+    public function testGetAddExcludeAdmins()
     {
         $rolesBuilder = new AdminRolesBuilder(
             $this->authorizationChecker,

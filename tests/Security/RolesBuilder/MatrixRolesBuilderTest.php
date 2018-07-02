@@ -30,7 +30,7 @@ final class MatrixRolesBuilderTest extends TestCase
     private $adminRolesBuilder;
     private $securityRolesBuilder;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->tokenStorage = $this->createMock(TokenStorageInterface::class);
         $this->token = $this->createMock(TokenInterface::class);
@@ -38,7 +38,7 @@ final class MatrixRolesBuilderTest extends TestCase
         $this->securityRolesBuilder = $this->createMock(ExpandableRolesBuilderInterface::class);
     }
 
-    public function testGetPermissionLabels(): void
+    public function testGetPermissionLabels()
     {
         $expected = ['EDIT' => 'EDIT', 'LIST' => 'LIST', 'CREATE' => 'CREATE'];
 
@@ -54,7 +54,7 @@ final class MatrixRolesBuilderTest extends TestCase
         $this->assertSame($expected, $matrixRolesBuilder->getPermissionLabels());
     }
 
-    public function testGetRoles(): void
+    public function testGetRoles()
     {
         $this->tokenStorage->method('getToken')
             ->willReturn($this->token);
@@ -94,7 +94,7 @@ final class MatrixRolesBuilderTest extends TestCase
         $this->assertSame($expected, $matrixRolesBuilder->getRoles());
     }
 
-    public function testGetRolesNoToken(): void
+    public function testGetRolesNoToken()
     {
         $this->tokenStorage->method('getToken')
             ->willReturn(null);

@@ -26,7 +26,7 @@ final class RolesMatrixCompilerPassTest extends TestCase
     /**
      * @test
      */
-    public function process(): void
+    public function process()
     {
         $definition = $this->createMock(Definition::class);
 

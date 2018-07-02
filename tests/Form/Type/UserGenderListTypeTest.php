@@ -25,7 +25,7 @@ final class UserGenderListTypeTest extends TestCase
     /**
      * @group legacy
      */
-    public function testDeprecatedUserGenderListType(): void
+    public function testDeprecatedUserGenderListType()
     {
         $userGenderListType = new UserGenderListType(
             BaseUser::class,

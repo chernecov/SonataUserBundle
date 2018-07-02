@@ -31,7 +31,7 @@ final class SecurityRolesBuilderTest extends TestCase
     private $translator;
     private $rolesHierarchy = ['ROLE_FOO' => ['ROLE_BAR', 'ROLE_ADMIN']];
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->admin = $this->createMock(AdminInterface::class);
@@ -39,7 +39,7 @@ final class SecurityRolesBuilderTest extends TestCase
         $this->translator = $this->createMock(TranslatorInterface::class);
     }
 
-    public function testGetRoles(): void
+    public function testGetRoles()
     {
         $this->pool->expects($this->at(0))
             ->method('getOption')
@@ -92,7 +92,7 @@ final class SecurityRolesBuilderTest extends TestCase
         $this->assertEquals($expected, $securityRolesBuilder->getExpandedRoles());
     }
 
-    public function testGetRolesNotExpanded(): void
+    public function testGetRolesNotExpanded()
     {
         $this->pool->expects($this->at(0))
             ->method('getOption')
@@ -145,7 +145,7 @@ final class SecurityRolesBuilderTest extends TestCase
         $this->assertEquals($expected, $securityRolesBuilder->getRoles(null, false));
     }
 
-    public function testGetRolesWithExistingRole(): void
+    public function testGetRolesWithExistingRole()
     {
         $this->pool->expects($this->at(0))
             ->method('getOption')

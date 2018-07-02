@@ -70,7 +70,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
         return $this->excludeAdmins;
     }
 
-    public function addExcludeAdmin(string $exclude): void
+    public function addExcludeAdmin(string $exclude)
     {
         $this->excludeAdmins[] = $exclude;
     }
