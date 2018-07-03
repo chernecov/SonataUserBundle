@@ -18,5 +18,5 @@ namespace Sonata\UserBundle\Security\RolesBuilder;
  */
 interface RolesBuilderInterface
 {
-    public function getRoles(?string $domain = null): array;
+    public function getRoles($domain = null): array;
 }

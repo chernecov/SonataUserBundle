@@ -54,7 +54,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
         $this->rolesHierarchy = $rolesHierarchy;
     }
 
-    public function getExpandedRoles(?string $domain = null): array
+    public function getExpandedRoles($domain = null): array
     {
         $securityRoles = [];
         foreach ($hierarchy = $this->getHierarchy() as $role => $childRoles) {
@@ -80,7 +80,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
         return $securityRoles;
     }
 
-    public function getRoles(?string $domain = null): array
+    public function getRoles($domain = null): array
     {
         $securityRoles = [];
         foreach ($hierarchy = $this->getHierarchy() as $role => $childRoles) {
@@ -102,7 +102,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
         ], $this->rolesHierarchy);
     }
 
-    private function getSecurityRole(string $role, ?string $domain): array
+    private function getSecurityRole(string $role, $domain): array
     {
         return [
             'role' => $role,
@@ -111,7 +111,7 @@ final class SecurityRolesBuilder implements ExpandableRolesBuilderInterface
         ];
     }
 
-    private function getSecurityRoles(array $hierarchy, array $roles, ?string $domain): array
+    private function getSecurityRoles(array $hierarchy, array $roles, $domain): array
     {
         $securityRoles = [];
         foreach ($roles as $role) {
